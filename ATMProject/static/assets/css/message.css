@@ -1,0 +1,20 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#home {
+    height: 100vh; /* 100% высоты окна браузера */
+    background-color: #фоновый-цвет; /* Замените на ваш фоновый цвет */
+    /* Дополнительные стили, если необходимо */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home .container {
+    flex-direction: row; /* Располагаем дочерние элементы горизонтально */
+    justify-content: center;
+    align-items: center;
+}

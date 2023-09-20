@@ -1,0 +1,618 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Учебный центр АТМ {% endblock %}
+
+{% block content %}
+
+    <!--========================================
+
+           Header
+
+    ========================================-->
+
+    <!--//** Navigation**//-->
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+
+
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <a class="navbar-brand" href="{% url 'index' %}">
+
+                    <img src="{% static 'assets/img/logo.png' %}" class="logo" alt="logo">
+
+                </a>
+
+            </div>
+
+            <!-- End Header Navigation -->
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar-menu">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="active scroll"><a href="#home">Главная</a></li>
+
+                    <li class="scroll"><a href="#about">О нас</a></li>
+
+                    <li class="scroll"><a href="#services">Сервис</a></li>
+
+                    <li class="scroll"><a href="#clients">Клиенты</a></li>
+
+                    <li class="scroll"><a href="#contact">Контакты</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+
+        </div>
+
+    </nav>
+
+
+
+    <!--//** Banner**//-->
+
+    <section id="home">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div id="particles-js"></div>
+
+                <!-- Introduction -->
+
+                <div class="col-md-6 caption">
+
+                    <h1>Учебный центр АТМ</h1>
+
+                    <h2>Ваш партнер в мире знаний!</h2>
+
+                    <p>
+
+                            У нас
+
+                            <span class="animated-text"></span>
+
+                            <span class="typed-cursor"></span>
+
+                        </p>
+
+
+
+
+                </div>
+
+                <!-- Sign Up -->
+
+                <div class="col-md-5 col-md-offset-1">
+
+                    <form class="signup-form" method="post" action="/">
+                        {% csrf_token %}
+
+                        <h2 class="text-center">Оставить заявку</h2>
+
+                        <hr>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="fio" placeholder="ФИО" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="email" class="form-control" name="email" placeholder="Адрес электронной почты" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="company" placeholder="Наименование компании" required="required">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="phone" placeholder="Телефон" required="required">
+
+                        </div>
+
+                        {% if message %}
+
+                            <div class="alert alert-success text-center">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="form-group text-center">
+
+                                <button type="submit" class="btn btn-blue btn-block">Отправить</button>
+
+                            </div>
+
+                        {% endif %}
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <!--========================================
+
+           About Us
+
+    ========================================-->
+
+
+
+    <section id="about" class="section-padding">
+
+        <div class="container">
+
+            <h2>О нас</h2>
+
+            <p>Учебный центр АТМ является вашим надежным партнером в области образования, помогая вам приобрести знания и навыки, которые будут востребованы в современном мире.</p>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">favorite</i>
+
+                        <h4>Качество</h4>
+
+                        <p>Мы предоставляем высококлассное образование с использованием передовых методик и опыта лучших преподавателей.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">flash_on</i>
+
+                        <h4>Разнообразие программ</h4>
+
+                        <p>Вам доступны разнообразные программы обучения, от курсов повышения квалификации до профессиональных программ и долгосрочных образовательных курсов</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">settings</i>
+
+                        <h4>Эффективные методы</h4>
+
+                        <p>Мы стараемся сделать обучение интересным и практичным, используя современные технологии и интерактивные методы.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--========================================
+
+           Story
+
+    ========================================-->
+
+
+
+    <section id="story">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <!-- Img -->
+
+                <div class="col-md-6 story-bg">
+
+                </div>
+
+                <!-- Story Caption -->
+
+                <div class="col-md-6">
+
+                    <div class="story-content">
+
+                        <h2>Ваш успех - наша цель!</h2>
+
+                        <p class="story-quote">
+
+                            Обучение с Учебным центром АТМ - это ваш первый шаг к успеху!
+
+                        </p>
+
+                        <div class="story-text">
+
+                            <p>Присоединяйтесь к Учебному центру АТМ уже сегодня и начните свой путь к новым возможностям и профессиональному росту. Не упустите шанс инвестировать в свое будущее. Образование - это ключ к успеху, и мы здесь, чтобы помочь вам открыть двери к новым горизонтам.</p>
+
+                        </div>
+
+                        <a href="#home" class="btn btn-white">Оставить заявку</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--========================================
+
+           Services
+
+    ========================================-->
+
+
+
+    <section id="services" class="section-padding">
+
+        <div class="container">
+
+            <h2>Наш сервис</h2>
+
+            <p>Мы предоставляем разнообразные образовательные программы, индивидуальное обучение и ресурсы для вашего успеха.</p>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">thumb_up</i>
+
+                        <h4>Отличное качество</h4>
+
+                        <p>Наши программы обучения основаны на высоких стандартах и актуальных знаниях, чтобы вы могли развиваться наилучшим образом.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">euro_symbol</i>
+
+                        <h4>Лучшая цена</h4>
+
+                        <p>Мы предлагаем конкурентоспособные цены, делая качественное образование доступным для всех.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">forum</i>
+
+                        <h4>24/7 Поддержка</h4>
+
+                        <p>Наша команда готова помочь вам в любое время, обеспечивая непрерывную поддержку и ответы на ваши вопросы.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--========================================
+
+           Features
+
+    ========================================-->
+
+
+
+    <section id="features">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <h2>Потрясающие возможности</h2>
+
+                    <p>Наш Учебный центр предоставляет уникальные возможности для обучения, от широкого выбора программ до разнообразных методов обучения, чтобы вы могли максимально раскрыть свой потенциал и достичь лучших результатов.</p>
+
+                    <hr>
+
+                    <div class="feat-media">
+
+                        <!-- Feature -->
+
+                        <div class="media">
+
+                            <div class="media-left">
+
+                                <a href="#">
+
+                                    <i class="material-icons">monetization_on</i>
+
+                                </a>
+
+                            </div>
+
+                            <div class="media-body">
+
+                                <h4 class="media-heading">Легкая оплата</h4>
+
+                                <p>Мы делаем процесс оплаты удобным и прозрачным. У нас доступны различные способы оплаты, гибкие платежные планы и прозрачные тарифы, чтобы сделать обучение доступным для всех.</p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Feature -->
+
+                        <div class="media">
+
+                            <div class="media-left">
+
+                                <a href="#">
+
+                                    <i class="material-icons">access_time</i>
+
+                                </a>
+
+                            </div>
+
+                            <div class="media-body">
+
+                                <h4 class="media-heading">Сохраняем ваше время</h4>
+
+                                <p>Мы ценим ваше время, поэтому предлагаем гибкий график обучения и эффективные методы обучения, чтобы вы могли учиться, не перегружая свой распорядок дня.</p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Feature -->
+
+                        <div class="media">
+
+                            <div class="media-left">
+
+                                <a href="#">
+
+                                    <i class="material-icons">computer</i>
+
+                                </a>
+
+                            </div>
+
+                            <div class="media-body">
+
+                                <h4 class="media-heading">Полная поддержка</h4>
+
+                                <p>Наша команда экспертов готова помочь вам на каждом этапе обучения. Мы предоставляем академическую поддержку, консультации и решаем любые вопросы, чтобы вы чувствовали себя уверенно и успешно завершили обучение.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--========================================
+
+           Clients
+
+    ========================================-->
+
+
+
+    <section id="clients" class="section-padding">
+
+        <div class="container">
+
+            <div class="row">
+
+                <h2>Отзывы наших клиентов</h2>
+
+                <!--// Clients Testimonials //-->
+
+                <div id="owl-testimonials">
+
+                    <div class="item">
+
+                        <p class="quote">Цена и качество - здесь это слово в слово. Обучение в Учебном центре АТМ оказалось для меня идеальным вариантом. Я сэкономил много времени и денег, и при этом получил качественное образование. Рекомендую всем!</p>
+
+                        <h4>-Отзыв от Михаила П.</h4>
+
+                    </div>
+
+                    <div class="item">
+
+                        <p class="quote">Я очень рада, что выбрала Учебный центр АТМ для своего обучения. Программы здесь не только разнообразны, но и современны. Я получила массу полезных навыков и знаний, которые пригодились мне в карьере. Большое спасибо команде за отличное обучение и поддержку!</p>
+
+                        <h4>-Отзыв от Анны С.</h4>
+
+                    </div>
+
+                    <div class="item">
+
+                        <p class="quote">Спасибо Учебному центру АТМ за профессиональную поддержку. Они не только предоставили отличные образовательные программы, но и всегда были готовы помочь с советами и решением вопросов. Это действительно ценно для студентов. Я горжусь своим образованием здесь!</p>
+
+                        <h4>-Отзыв от Елены К.</h4>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--========================================
+
+           Contact
+
+    ========================================-->
+
+
+    <section id="contact" class="">
+
+        <!-- Contact Info -->
+
+        <div class="container contact-info">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">place</i>
+
+                        <h4>Адресс</h4>
+
+                        <p>308032, РФ, Белгородская область, г. Белгород, ул. Привольная, 23</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">phone</i>
+
+                        <h4>Телефон</h4>
+
+                        <p>+7-962-307-01-40</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">email</i>
+
+                        <h4>Почта</h4>
+
+                        <p>atm_ooo@bk.ru</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--========================================
+
+           Footer
+
+    ========================================-->
+
+
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="footer-caption">
+
+                    <h5 class="pull-left">ООО "АТМ", &copy;2023 Все права защищены</h5>
+
+                    <a href="#home" class="btn btn-white pull-right">Оставить заявку</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+{% endblock %}
