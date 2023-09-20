@@ -17,6 +17,7 @@ pickleshare==0.7.5
 prompt-toolkit==3.0.39
 pure-eval==0.2.2
 Pygments==2.16.1
+python-dotenv==1.0.0
 six==1.16.0
 sqlparse==0.4.4
 stack-data==0.6.2
