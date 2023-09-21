@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-.env
+nginx/ssl/
 
 .idea
 logs
