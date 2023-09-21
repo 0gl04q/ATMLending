@@ -90,7 +90,7 @@
 
                 <div class="col-md-5 col-md-offset-1">
 
-                    <form class="signup-form" method="post" action="/message/">
+                    <form class="signup-form" method="post" action="{% url 'message' %}">
                         {% csrf_token %}
 
                         <h2 class="text-center">Получить ссылку</h2>
