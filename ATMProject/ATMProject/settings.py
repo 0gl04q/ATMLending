@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("S_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['195.133.197.160', '127.0.0.1', 'ucatm.ru', 'www.ucatm.ru']
 
@@ -135,3 +135,5 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.getenv('HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('HOST_PASSWORD')
 
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://ucatm.ru', 'https://127.0.0.1']

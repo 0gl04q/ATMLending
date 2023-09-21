@@ -114,8 +114,9 @@ def create_lead(info):
 def get_server_url(request):
     current_url = request.build_absolute_uri()
     url_parts = urlparse(current_url)
-    server_url = urlunparse((url_parts.scheme, url_parts.netloc, '', '', '', ''))
-    return server_url
+
+    base_url = f"https://{url_parts.netloc}"
+    return base_url
 
 
 def download_zip_file(request, link):
