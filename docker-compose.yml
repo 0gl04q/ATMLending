@@ -24,10 +24,12 @@ services:
       - 8080
     ports:
       - "80:8080"
+      - "443:443"
     volumes:
       - ./ATMProject/static:/srv/www/ATMProject/static
       - ./ATMProject/media:/srv/www/ATMProject/media
       - ./ATMProject/logs:/srv/www/ATMProject/logs
       - ./docker/nginx:/etc/nginx/conf.d
+      - ./docker/nginx/ssl:/etc/ssl
     depends_on:
       - python
