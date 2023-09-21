@@ -40,7 +40,7 @@ def get_message(request):
             send_mail_form(request, model_obj)
 
             # Отправка лида B24
-            create_lead(model_obj)
+            create_lead(model_obj, 'Заполнение формы получения материалов УЦ "АТМ"')
 
             success_message = 'Ссылка отправлена на ваш Email!'
 
@@ -62,7 +62,7 @@ def send_mail_form(request, obj_info):
     )
 
 
-def create_lead(info):
+def create_lead(info, title_lead):
 
     # разбиваем и устанавливаем имя
     parts = info.fio.split()
@@ -75,14 +75,14 @@ def create_lead(info):
     user_id = 3706
 
     fields = {
-        'TITLE': 'Заполнение формы получения материалов УЦ "АТМ"',
+        'TITLE': title_lead,
         'NAME': info_name,
         'LAST_NAME': info_last_name,
         'SECOND_NAME': info_second_name,
         'PHONE': info.phone,
         'EMAIL': info.email,
         'COMPANY_TITLE': info.company,
-        'ASSIGNED_BY_ID': 3706
+        'ASSIGNED_BY_ID': user_id
     }
 
     lead = {
