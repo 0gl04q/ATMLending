@@ -1,12 +1,13 @@
 import os
 
+from dotenv import load_dotenv
 from fast_bitrix24 import Bitrix
+from urllib.parse import urlparse
 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from urllib.parse import urlparse, urlunparse
+from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import get_template
-from dotenv import load_dotenv
 
 from .forms import InfoForm
 from .models import Info
@@ -121,4 +122,4 @@ def get_server_url(request):
 
 def download_zip_file(request, link):
     get_object_or_404(Info, link=link)
-    return redirect('/media/Материалы.zip')
+    return redirect(f'{settings.MEDIA_URL}Материалы.zip')
