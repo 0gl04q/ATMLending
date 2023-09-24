@@ -8,6 +8,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import get_template
+from django.views.generic import TemplateView
 
 from .forms import InfoForm
 from .models import Info
@@ -15,20 +16,37 @@ from .models import Info
 load_dotenv()
 
 
-def get_lending(request):
-    success_message = None
-    if request.method == 'POST':
+class LendingView(TemplateView):
+    template_name = 'lending/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['message'] = self.request.session.pop('message', None)
+        return context
+
+    def post(self, request, *args, **kwargs):
         form = InfoForm(request.POST)
         if form.is_valid():
-            if not Info.objects.filter(email=form.data['email']).exists():
+            email = form.cleaned_data['email']
+            if not Info.objects.filter(email=email).exists():
                 form.save()
-            success_message = 'Заявка передана успешно!'
-    return render(request, 'lending/index.html', context={'message': success_message})
+            message = 'Заявка передана успешно!'
+        else:
+            message = 'Ошибка при заполнении формы. Пожалуйста, проверьте данные и попробуйте снова.'
+
+        request.session['message'] = message
+        return self.render_to_response(self.get_context_data())
 
 
-def get_message(request):
-    success_message = None
-    if request.method == 'POST':
+class MaterialView(TemplateView):
+    template_name = 'lending/material.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['message'] = self.request.session.pop('message', None)
+        return context
+
+    def post(self, request, *args, **kwargs):
         form = InfoForm(request.POST)
         if form.is_valid():
             if not Info.objects.filter(email=form.data['email']).exists():
@@ -36,15 +54,16 @@ def get_message(request):
 
             model_obj = Info.objects.get(email=form.data['email'])
 
-            # Отправка письма
             send_mail_form(request, model_obj)
 
-            # Отправка лида B24
             create_lead(model_obj, 'Заполнение формы получения материалов УЦ "АТМ"')
 
-            success_message = 'Ссылка отправлена на ваш Email!'
+            message = 'Ссылка отправлена на ваш Email!'
+        else:
+            message = 'Ошибка при заполнении формы. Пожалуйста, проверьте данные и попробуйте снова.'
 
-    return render(request, 'lending/message.html', context={'message': success_message})
+        request.session['message'] = message
+        return self.render_to_response(self.get_context_data())
 
 
 def send_mail_form(request, obj_info):
@@ -63,7 +82,6 @@ def send_mail_form(request, obj_info):
 
 
 def create_lead(info, title_lead):
-
     # разбиваем и устанавливаем имя
     parts = info.fio.split()
 
@@ -120,6 +138,9 @@ def get_server_url(request):
     return base_url
 
 
-def download_zip_file(request, link):
+def download_file(request, link):
     get_object_or_404(Info, link=link)
-    return redirect(f'{settings.MEDIA_URL}Материалы.zip')
+
+    return render(request, f'lending/download.html', context={
+        'MEDIA_URL': settings.MEDIA_URL
+    })

@@ -16,5 +16,4 @@ class Info(models.Model):
         super().save(*args, **kwargs)
 
     def __create_link(self):
-        # Todo Дописать алгоритм создания ссылки
-        return abs(hash(self.fio))
+        return abs(hash(f'{self.fio}+{self.email}'))
