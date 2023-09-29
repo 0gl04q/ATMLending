@@ -31,6 +31,13 @@ class LendingView(TemplateView):
             if not Info.objects.filter(email=email).exists():
                 form.save()
             message = 'Заявка передана успешно!'
+
+            model_obj = Info.objects.get(email=form.data['email'])
+
+            send_mail_form(request, model_obj)
+
+            create_lead(model_obj, 'Заполнение формы лендинг УЦ "АТМ"')
+
         else:
             message = 'Ошибка при заполнении формы. Пожалуйста, проверьте данные и попробуйте снова.'
 
